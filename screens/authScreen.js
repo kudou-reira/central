@@ -11,7 +11,7 @@ class AuthScreen extends Component {
 		// AsyncStorage.removeItem('token');
 		// AsyncStorage.removeItem('expires');
 		// AsyncStorage.removeItem('type');
-		
+
 		// this.props.facebookLogin();
 		// this.onAuthComplete(this.props);
 	}
@@ -24,7 +24,7 @@ class AuthScreen extends Component {
 	onAuthComplete(props) {
 		console.log("this is props in onAuthComplete", props);
 		if(props.token) {
-			this.props.navigation.navigate('central');
+			this.props.navigation.navigate('hub');
 		}
 	}
 
@@ -37,6 +37,10 @@ class AuthScreen extends Component {
 		console.log("on google button pressed");
 		this.props.googleLogin();
 		this.onAuthComplete(this.props);
+	}
+
+	onNoLogin = () => {
+		this.props.navigation.navigate('hub');
 	}
 
 
@@ -75,7 +79,7 @@ class AuthScreen extends Component {
 					outline={false}
 					rounded={true}
 					backgroundColor={'#645796'}
-					onPress={this.props.onComplete}
+					onPress={this.props.onNoLogin}
 					icon={{name: 'arrow-right', type: 'font-awesome'}}
 					containerViewStyle={styles.containerStyle}
 					buttonStyle={styles.buttonStyle}

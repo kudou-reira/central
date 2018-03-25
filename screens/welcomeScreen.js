@@ -2,7 +2,7 @@ import _ from 'lodash';
 import React, { Component } from 'react';
 import { View, Text, AsyncStorage } from 'react-native';
 import { AppLoading } from 'expo';
-import CentralScreen from '../screens/centralScreen';
+import HubScreen from '../screens/hubScreen';
 import Slides from '../components/slides';
 
 const SLIDE_DATA = [
@@ -11,7 +11,7 @@ const SLIDE_DATA = [
 ];
 
 class WelcomeScreen extends Component {
-	state = { token: null };
+	state = { token: null, type: null };
 
 	async componentWillMount() {
 		// AsyncStorage.removeItem('token');
@@ -23,13 +23,13 @@ class WelcomeScreen extends Component {
 		let type = await AsyncStorage.getItem('type');
 		// if type doesn't exist, then do the oauth flow i guess
 
-		let token = await AsyncStorage.getItem('token');
+		// let token = await AsyncStorage.getItem('token');
 
-		if(token) {
-			this.props.navigation.navigate('central');
-			this.setState({ token });
+		if(type) {
+			this.props.navigation.navigate('hub');
+			this.setState({ type });
 		} else {
-			this.setState({ token: false });
+			this.setState({ type: false });
 		}
 	}
 
@@ -38,7 +38,7 @@ class WelcomeScreen extends Component {
 	}
 
 	render() {
-		if(_.isNull(this.state.token)) {
+		if(_.isNull(this.state.type)) {
 			return <AppLoading />;
 		}
 
