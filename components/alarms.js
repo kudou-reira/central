@@ -3,7 +3,7 @@ import { View, TouchableOpacity } from 'react-native';
 import { Card } from 'react-native-elements';
 
 class Alarms extends Component {
-	onAlarmsPress(){
+	onAlarmsPress() {
 		this.props.navigation.navigate('alarmSettings');
 	}
 
