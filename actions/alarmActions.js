@@ -3,8 +3,8 @@ import {
 } from './types'
 
 export const updateAlarms = (alarm) => {
-	return(
+	return({
 		type: UPDATE_ALARMS,
 		payload: alarm
-	);
+	});
 }

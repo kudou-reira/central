@@ -9,7 +9,7 @@ const INITIAL_STATE = {
 export default function(state = INITIAL_STATE, action) {
 	switch(action.type) {
 		case UPDATE_ALARMS:
-			return { ...state, alarms: action.payload.alarm };
+			return { ...state, alarms: [...state.alarms, action.payload ] };
 		default:
 			return state;
 	}
